@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-07-05T23:49:20 IST" name="Default suite" finished-at="2024-07-05T23:49:49 IST" duration-ms="28373">
+    <groups>
+    </groups>
+    <test started-at="2024-07-05T23:49:20 IST" name="Default test" finished-at="2024-07-05T23:49:49 IST" duration-ms="28373">
+      <class name="Mock_Selenium_Prepartion.Selenium_Preparation.ReadDataFromXlsx">
+        <test-method is-config="true" signature="browserIntialize()[pri:0, instance:Mock_Selenium_Prepartion.Selenium_Preparation.ReadDataFromXlsx@18271936]" started-at="2024-07-05T23:49:21 IST" name="browserIntialize" finished-at="2024-07-05T23:49:33 IST" duration-ms="11898" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- browserIntialize -->
+        <test-method signature="login(java.lang.String,java.lang.String)[pri:0, instance:Mock_Selenium_Prepartion.Selenium_Preparation.ReadDataFromXlsx@18271936]" started-at="2024-07-05T23:49:33 IST" name="login" data-provider="getDataFromExcel" finished-at="2024-07-05T23:49:35 IST" duration-ms="2169" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[ramita@yopmsil.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[123456]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method is-config="true" signature="browserIntialize()[pri:0, instance:Mock_Selenium_Prepartion.Selenium_Preparation.ReadDataFromXlsx@18271936]" started-at="2024-07-05T23:49:35 IST" name="browserIntialize" finished-at="2024-07-05T23:49:41 IST" duration-ms="5499" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- browserIntialize -->
+        <test-method signature="login(java.lang.String,java.lang.String)[pri:0, instance:Mock_Selenium_Prepartion.Selenium_Preparation.ReadDataFromXlsx@18271936]" started-at="2024-07-05T23:49:41 IST" name="login" data-provider="getDataFromExcel" finished-at="2024-07-05T23:49:42 IST" duration-ms="1236" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[tanvi@yopmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[123456]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method is-config="true" signature="browserIntialize()[pri:0, instance:Mock_Selenium_Prepartion.Selenium_Preparation.ReadDataFromXlsx@18271936]" started-at="2024-07-05T23:49:42 IST" name="browserIntialize" finished-at="2024-07-05T23:49:48 IST" duration-ms="5500" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- browserIntialize -->
+        <test-method signature="login(java.lang.String,java.lang.String)[pri:0, instance:Mock_Selenium_Prepartion.Selenium_Preparation.ReadDataFromXlsx@18271936]" started-at="2024-07-05T23:49:48 IST" name="login" data-provider="getDataFromExcel" finished-at="2024-07-05T23:49:49 IST" duration-ms="1027" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[dewe@yopmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[123456]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+      </class> <!-- Mock_Selenium_Prepartion.Selenium_Preparation.ReadDataFromXlsx -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
