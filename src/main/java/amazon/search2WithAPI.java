@@ -1,31 +1,35 @@
 package amazon;
 
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class search {
+public class search2WithAPI {
 
 	public static  WebDriver driver;
 	
-	static String items[]= {"Pro-Series 16-in-1 Vegetable Chopper w","Fullstar Vegetable Chopper","Hamilton Beach Electric Vegetable Chopper & Mini Food Processor"};
-	static List<String> ActualProductlist= Arrays.asList(items);
+	//static String items[]= {"Pro-Series 16-in-1 Vegetable Chopper w","Fullstar Vegetable Chopper","Hamilton Beach Electric Vegetable Chopper & Mini Food Processor"};
+	
 	
 	static WebDriverWait wait;
 	
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException, JsonMappingException, JsonProcessingException {
 		// TODO Auto-generated method stub
 		WebDriverManager.chromedriver();
 		 driver= new ChromeDriver();
@@ -41,17 +45,7 @@ public class search {
 		 for(WebElement imageElement:imagelements) {
 		 String src=imageElement.getAttribute("src");
 		 System.out.println(src);
-		 if(src!=null && src.contains("captcha")) {
-			 imageFound=true;
-			 continue;
-		 }
-		 }
-		 
-			/*
-			 * if(imageFound) {
-			 * 
-			 * }
-			 */
+		
 		 System.out.println( driver.getTitle());
 		 System.out.println(driver.getCurrentUrl());
 		 Thread.sleep(2000);
@@ -59,18 +53,30 @@ public class search {
 		 //login to website
 		 login(driver);
 		 
+			/*
+			 * System.out.print("add otp"); Scanner sc= new Scanner(System.in);
+			 * sc.nextLine();
+			 */
+		 //get products from api
+		 List<String> ActualProductlist= getProducts.getProductListFromAPI();
+		 for(String productName:ActualProductlist) {
+			 System.out.println(productName);	 }
+		 System.out.println(	"the size of the items"+	 ActualProductlist.size());
+		 
+		 
+		 
 		 driver.findElement(By.id("twotabsearchtextbox")).sendKeys("chopper");
 		 Thread.sleep(4000);
 		 
 		List<WebElement> searchedList= driver.findElements(By.xpath("//div[@class='s-suggestion-container']/div"));
 		System.out.println(	searchedList.size());
 		
-		System.out.println(	"the size of the items"+	ActualProductlist.size());
+		
 		
 		for(WebElement element:searchedList) {
 			
 			String text=	element.getAttribute("aria-label");
-			System.out.println(text);
+		//	System.out.println(text);
 			try {
 			if(text.equals("chopper")) {
 				
@@ -99,8 +105,10 @@ public class search {
 		
 		System.out.println(ExpectedProduct);
 		
-			if(ActualProductlist.equals(ExpectedProduct)) {
+			if(ActualProductlist.contains(ExpectedProduct)) {
+			
 				product.findElement(By.xpath(".//button[text()='Add to cart']")).click();
+				Thread.sleep(2000);
 				j++;
 				System.out.println(j);
 				
@@ -114,11 +122,19 @@ public class search {
 		}
 		
 		
-		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.id("nav-cart"))));
-		driver.findElement(By.id("nav-cart")).click();
 		
-	driver.findElement(By.xpath("//input[@name='proceedToRetailCheckout']")).click();
-	}
+		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+		jsExecutor.executeScript("window.scrollBy(0,-3000)");
+		wait= new WebDriverWait(driver,Duration.ofMillis(2000));
+		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//a[@id='nav-cart']"))));
+		driver.findElement(By.xpath("//a[@id='nav-cart']")).click();
+
+
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//input[@value='Proceed to checkout']"))));
+	//driver.findElement(By.xpath("//input[@value='Proceed to checkout']")).click();
+	
+	
+	}}
 	
 	
 	
@@ -134,5 +150,9 @@ public class search {
 	driver.findElement(By.id("ap_password")).sendKeys("Ramita@1234");
 	driver.findElement(By.id("signInSubmit")).click();
 }
+  
+  
+  
+  
 
 }
