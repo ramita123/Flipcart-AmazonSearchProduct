@@ -122,17 +122,21 @@ public class search2WithAPI {
 		}
 		
 		
+
+		
+		wait= new WebDriverWait(driver,Duration.ofSeconds(6));
+		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.cssSelector(".a-changeover-inner strong"))));
+		
 		
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-		jsExecutor.executeScript("window.scrollBy(0,-3000)");
-		wait= new WebDriverWait(driver,Duration.ofMillis(2000));
-		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//a[@id='nav-cart']"))));
-		driver.findElement(By.xpath("//a[@id='nav-cart']")).click();
+		jsExecutor.executeScript("window.scrollBy(0,-4000)");
+	//	wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//div[@id='nav-cart-count-container']"))));
+		driver.findElement(By.xpath("//div[@id='nav-cart-count-container']")).click();
 
 
-		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//input[@value='Proceed to checkout']"))));
+		//wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//input[@value='Proceed to checkout']"))));
 	//driver.findElement(By.xpath("//input[@value='Proceed to checkout']")).click();
-	
+	driver.quit();
 	
 	}}
 	
@@ -147,7 +151,7 @@ public class search2WithAPI {
 	
 	driver.findElement(By.id("ap_email")).sendKeys("8360378289");
 	driver.findElement(By.id("continue")).click();
-	driver.findElement(By.id("ap_password")).sendKeys("Ramita@1234");
+	driver.findElement(By.id("ap_password")).sendKeys("sdfds@efger");
 	driver.findElement(By.id("signInSubmit")).click();
 }
   
